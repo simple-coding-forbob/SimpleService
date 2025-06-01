@@ -38,9 +38,9 @@
 							$("#result").html(res);
 	                	}
 	                },
-	                error: function (jqXHR) {
-	                    console.error("status:", jqXHR.status); // HTTP 상태코드 (예: 404, 500)
-	                    console.error("responseText:", jqXHR.responseText); // 서버에서 내려준 에러 메시지
+	                error: function (request) {
+	                    console.error("status:", request.status); // HTTP 상태코드 (예: 404, 500)
+	                    console.error("responseText:", request.responseText); // 서버에서 내려준 에러 메시지
 	                }
 	            });
 	        });
