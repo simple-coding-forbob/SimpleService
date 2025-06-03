@@ -12,7 +12,7 @@
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
-<div class="container">
+<div class="page mt5">
 	<form id="addForm" name="addForm" method="post">
 		<div class="mb-3">
 		  <label for="ename" class="form-label">ename</label>
@@ -23,7 +23,7 @@
 		         placeholder="사원명">
 		</div>
 		
-		<div class="mb-3">
+		<div class="mb3">
 		  <label for="job" class="form-label">job</label>
 		  <input type="text" 
 		         class="form-control" 
@@ -32,7 +32,7 @@
 		         placeholder="직위">
 		</div>
 		
-		<div class="mb-3">
+		<div class="mb3">
 		  <label for="manager" class="form-label">manager</label>
 		  <input type="text" 
 		         class="form-control" 
@@ -41,7 +41,7 @@
 		         placeholder="관리자">
 		</div>
 				
-		<div class="mb-3">
+		<div class="mb3">
 			<button type="button" 
 			        class="btn btn-primary"
 			        onclick="fn_save()"

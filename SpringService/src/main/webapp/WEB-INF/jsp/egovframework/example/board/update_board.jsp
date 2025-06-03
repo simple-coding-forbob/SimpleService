@@ -17,10 +17,10 @@
 <body>
 
 <jsp:include page="/common/header.jsp"></jsp:include>
-<div class="container">
+<div class="page mt5">
 	<form id="detailForm" name="detailForm" method="post">
 		<input type="hidden" name="id" value="<c:out value="${boardVO.id}"/>" />
-		<div class="mb-3">
+		<div class="mb3">
 		  <label for="title" class="form-label">title</label>
 		  <input type="text" 
 		         class="form-control" 
@@ -30,7 +30,7 @@
 		         placeholder="부서명">
 		</div>
 		
-		<div class="mb-3">
+		<div class="mb3">
 		  <label for="content" class="form-label">content</label>
 		  <input type="text" 
 		         class="form-control" 
@@ -40,7 +40,7 @@
 		         placeholder="부서위치">
 		</div>
 		
-		<div class="mb-3">
+		<div class="mb3">
 			<button type="button" 
 			        class="btn btn-warning"
 			        onclick="fn_save()"

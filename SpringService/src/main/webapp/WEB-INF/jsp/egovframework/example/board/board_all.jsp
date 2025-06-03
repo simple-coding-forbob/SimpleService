@@ -63,10 +63,10 @@
 <form id="listForm" name="listForm" method="get" >
     <input type="hidden" name="id" />
 		
-	<div class="container">
+	<div class="page mt5">
 		<h2>전체 조회</h2>
 			
-    	<div class="input-group mb-3 mt-3">
+    	<div class="input-group mb3 mt3">
 		  <input type="text" 
 		         class="form-control" 
 		         id="searchKeyword"
