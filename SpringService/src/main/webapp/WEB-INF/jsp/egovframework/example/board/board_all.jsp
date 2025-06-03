@@ -2,20 +2,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-	<title>Dept</title>
+	<title>Board</title>
 	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 	<script type="text/javascript" defer="defer">
 		function fn_egov_selectList() {
-			document.listForm.action = "<c:out value="/dept/dept.do" />";
+			document.listForm.action = "<c:out value="/board/board.do" />";
 			document.listForm.submit();
 		}
 		function fn_addView() {
-			document.listForm.action="<c:out value="/dept/addition.do"/>";
+			document.listForm.action="<c:out value="/board/addition.do"/>";
             document.listForm.submit();
         }
-	    function fn_select(dno) {
-			document.listForm.dno.value = dno;
-			document.listForm.action="<c:out value="/dept/edition.do"/>";
+	    function fn_select(id) {
+			document.listForm.id.value = id;
+			document.listForm.action="<c:out value="/board/edition.do"/>";
 	        document.listForm.submit();
 	    }
 	</script>
@@ -32,7 +32,7 @@
 	    function fn_ajax() {
 	    	let searchKeyword = $("#searchKeyword").val();
 	        $.ajax({
-	            url: "/api/dept/dept.do",
+	            url: "/api/board/board.do",
 	            type: "GET",
 	            dataType: "json",
 	            data: {"searchKeyword":searchKeyword},
@@ -52,7 +52,7 @@
 	    function fn_view(data) {
 	       	let res="";
 	           $.each(data, function (index, value) {
-					res+=value.dname + "<br>";
+					res+=value.title + "<br>";
 			})
 			$("#result").html(res);		
 		}
@@ -61,7 +61,7 @@
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
 <form id="listForm" name="listForm" method="get" >
-    <input type="hidden" name="dno" />
+    <input type="hidden" name="id" />
 		
 	<div class="container">
 		<h2>전체 조회</h2>
@@ -85,21 +85,21 @@
 		<table class="table">
 		  <thead>
 		    <tr>
-		      <th scope="col">dno</th>
-		      <th scope="col">dname</th>
-		      <th scope="col">loc</th>
+		      <th scope="col">id</th>
+		      <th scope="col">title</th>
+		      <th scope="col">content</th>
 		    </tr>
 		  </thead>
 		  <tbody>
 			<c:forEach var="data" items="${list}">
 		    <tr>
 		      <td>
-				<a href="javascript:fn_select('<c:out value="${data.dno}"/>')">
-				   <c:out value="${data.dno}"/>
+				<a href="javascript:fn_select('<c:out value="${data.id}"/>')">
+				   <c:out value="${data.id}"/>
 				</a>
 		      </td>
-		      <td><c:out value="${data.dname}"/></td>
-		      <td><c:out value="${data.loc}"/></td>
+		      <td><c:out value="${data.title}"/></td>
+		      <td><c:out value="${data.content}"/></td>
 		    </tr>
 			</c:forEach>
 		  </tbody>

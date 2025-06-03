@@ -3,6 +3,7 @@
 <html>
 <head>
 	<title>Dept</title>
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 	<script type="text/javascript" defer="defer">
 		function fn_egov_selectList() {
 			document.listForm.action = "<c:out value="/emp/emp.do" />";
@@ -17,6 +18,44 @@
 			document.listForm.action="<c:out value="/emp/edition.do"/>";
 	        document.listForm.submit();
 	    }
+	</script>
+	
+	<script>
+	    /* 자동완성 + debouncing(성능업, 입력후 0.5초 이후에 AJAX 실행) */
+	    $(function () {
+	    	let timer;
+	        $("#searchKeyword").keyup(function () {
+	        	clearTimeout(timer);  // 이전 타이머 취소
+	        	timer=setTimeout(function() {fn_ajax();},500)
+	        });
+	    });
+	    function fn_ajax() {
+	    	let searchKeyword = $("#searchKeyword").val();
+	        $.ajax({
+	            url: "/api/emp/emp.do",
+	            type: "GET",
+	            dataType: "json",
+	            data: {"searchKeyword":searchKeyword},
+	            success: function (data) {
+	            	console.log(data);
+	            	$("#result").empty();
+	            	if(searchKeyword !="") {
+	            		/* 화면에 보이기 */
+	            		fn_view(data);
+	            	}
+	            },
+	            error: function (request) {
+	                console.error(request);
+	            }
+	        });			
+		}
+	    function fn_view(data) {
+	       	let res="";
+	           $.each(data, function (index, value) {
+					res+=value.ename + "<br>";
+			})
+			$("#result").html(res);		
+		}
 	</script>
 </head>
 <body>
@@ -41,6 +80,8 @@
 		          검색
 		  </button>
 		</div>
+		<div id="result"></div>
+		
 		<table class="table">
 		  <thead>
 		    <tr>

@@ -8,7 +8,7 @@ import java.util.List;
 import egovframework.example.common.Criteria;
 
 public interface DeptService {
-	List<DeptVO> selectDeptList(Criteria criteria);
+	List<?> selectDeptList(Criteria criteria);
 	void insert(DeptVO deptVO);
 	DeptVO selectDept(long dno);
 	void update(DeptVO deptVO);

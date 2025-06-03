@@ -25,11 +25,12 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dept(부서)
+            그룹관리
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="<c:url value='/dept/dept.do'/>">Dept</a></li>
-            <li><a class="dropdown-item" href="<c:url value='/emp/emp.do'/>">Emp(연습)</a></li>
+            <li><a class="dropdown-item" href="<c:url value='/emp/emp.do'/>">Emp(퀴즈)</a></li>
+            <li><a class="dropdown-item" href="<c:url value='/board/board.do'/>">Board(마무리퀴즈)</a></li>
           </ul>
         </li>
 

@@ -24,7 +24,7 @@ public class DeptController {
 
 	@GetMapping("/dept/dept.do")
 	public String selectDeptList(@ModelAttribute("searchVO") Criteria criteria, Model model) {
-		List<DeptVO> list = deptService.selectDeptList(criteria);
+		List<?> list = deptService.selectDeptList(criteria);
 		model.addAttribute("list", list);
 
 		return "dept/dept_all";
@@ -38,7 +38,7 @@ public class DeptController {
 
 	@PostMapping("/dept/add.do")
 	public String insert(@ModelAttribute DeptVO deptVO) {
-		
+		log.info(deptVO);
 		deptService.insert(deptVO);
 		return "redirect:/dept/dept.do";
 	}

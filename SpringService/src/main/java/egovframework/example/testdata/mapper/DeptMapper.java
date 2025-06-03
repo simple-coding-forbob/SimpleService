@@ -96,7 +96,7 @@ public class DeptMapper {
     }
     
     //    이름 like 조회하는 함수
-    public List<DeptVO> selectDeptList(Criteria criteria) {
+    public List<?> selectDeptList(Criteria criteria) {
         List<DeptVO> list = SampleDept.getList();
 
         List<DeptVO> resList =new ArrayList<DeptVO>();

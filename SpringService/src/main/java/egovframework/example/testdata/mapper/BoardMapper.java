@@ -31,7 +31,7 @@ public class BoardMapper {
     }
 
     //    아이디로 조회하는 함수
-    public BoardVO selectBoard(int id) {
+    public BoardVO selectBoard(long id) {
         List<BoardVO> list = sampleBoard.getList();
 
         BoardVO resBoard = null;
@@ -83,7 +83,7 @@ public class BoardMapper {
     }
 
 //  데이터를 삭제하는 함수
-    public int delete(int id) {
+    public int delete(long id) {
         List<BoardVO> list = sampleBoard.getList();
 
         for (int i = 0; i < list.size(); i++) {

@@ -20,7 +20,7 @@ public class DeptServiceImpl implements DeptService{
 	private DeptMapper deptMapper;
 	
 	@Override
-	public List<DeptVO> selectDeptList(Criteria criteria) {
+	public List<?> selectDeptList(Criteria criteria) {
 		return deptMapper.selectDeptList(criteria);
 	}
 	

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package egovframework.example.dept.web;
+package egovframework.example.emp.web;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
 import egovframework.example.common.Criteria;
-import egovframework.example.dept.service.DeptService;
-import egovframework.example.dept.service.DeptVO;
-import jdk.internal.org.jline.utils.Log;
+import egovframework.example.dept.web.DeptController;
+import egovframework.example.emp.service.EmpService;
+import egovframework.example.emp.service.EmpVO;
 import lombok.extern.log4j.Log4j;
 
 /**
@@ -22,14 +22,14 @@ import lombok.extern.log4j.Log4j;
  */
 @Log4j
 @RestController
-public class DeptAjaxController {
+public class EmpAjaxController {
 	@Autowired
-	private DeptService deptService;
+	private EmpService empService;
 
-	@GetMapping("/api/dept/dept.do")
-	public List<?> selectDeptList(@ModelAttribute("searchVO") Criteria criteria) {
+	@GetMapping("/api/emp/emp.do")
+	public List<?> selectEmpList(@ModelAttribute("searchVO") Criteria criteria) {
 		log.info(criteria);
-		List<?> list = deptService.selectDeptList(criteria);
+		List<?> list = empService.selectEmpList(criteria);
 		
 		return list;
 	}	
