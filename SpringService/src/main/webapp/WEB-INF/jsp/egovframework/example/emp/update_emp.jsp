@@ -3,22 +3,24 @@
 <html>
 <head>
 	<title>Member</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 	<script type="text/javascript">
 		function fn_save() {
-			document.detailForm.action = "<c:out value="/emp/edit.do"/>";
-            document.detailForm.submit();
+ 			$("#addForm").attr("action",'<c:out value="/emp/edit.do" />')
+			.submit();
 		}
 		function fn_delete(){
-			document.detailForm.action = "<c:out value="/emp/delete.do"/>";
-            document.detailForm.submit();
+			$("#addForm").attr("action",'<c:out value="/emp/delete.do" />')
+			.submit();
 		}
 	</script>
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
 <div class="page mt5">
-	<form id="detailForm" name="detailForm" method="post">
-		<input type="hidden" name="eno" value="<c:out value="${empVO.eno}"/>" />
+	<form id="addForm" name="addForm" method="post">
+		<input type="hidden" id="eno" name="eno" value="<c:out value="${empVO.eno}"/>" />
 		<div class="mb3">
 		  <label for="ename" class="form-label">ename</label>
 		  <input type="text" 

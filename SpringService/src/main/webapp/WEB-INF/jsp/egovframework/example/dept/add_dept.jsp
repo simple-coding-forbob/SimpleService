@@ -3,10 +3,12 @@
 <html>
 <head>
 	<title>Dept</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 	<script type="text/javascript" defer="defer">
 		function fn_save() {
-			document.addForm.action = "<c:out value="/dept/add.do"/>";
-			document.addForm.submit();
+			$("#addForm").attr("action",'<c:out value="/dept/add.do" />')
+			.submit();
 		}
 	</script>
 </head>

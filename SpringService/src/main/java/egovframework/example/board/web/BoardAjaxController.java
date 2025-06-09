@@ -32,5 +32,5 @@ public class BoardAjaxController {
 		List<?> list = boardService.selectBoardList(criteria);
 		
 		return list;
-	}	
+	}
 }

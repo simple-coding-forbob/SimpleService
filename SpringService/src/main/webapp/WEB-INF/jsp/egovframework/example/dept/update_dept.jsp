@@ -3,23 +3,26 @@
 <html>
 <head>
 	<title>Dept</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 	<script type="text/javascript">
 		function fn_save() {
-			document.detailForm.action = "<c:out value="/dept/edit.do"/>";
-            document.detailForm.submit();
+ 			$("#addForm").attr("action",'<c:out value="/dept/edit.do" />')
+			.submit();
 		}
 		function fn_delete(){
-			document.detailForm.action = "<c:out value="/dept/delete.do"/>";
-            document.detailForm.submit();
+			$("#addForm").attr("action",'<c:out value="/dept/delete.do" />')
+			.submit();
 		}
+		
 	</script>
 </head>
 <body>
 
 <jsp:include page="/common/header.jsp"></jsp:include>
 <div class="page mt5">
-	<form id="detailForm" name="detailForm" method="post">
-		<input type="hidden" name="dno" value="<c:out value="${deptVO.dno}"/>" />
+	<form id="addForm" name="addForm" method="post">
+		<input type="hidden" id="dno" name="dno" value="<c:out value="${deptVO.dno}"/>" />
 		<div class="mb-3">
 		  <label for="dname" class="form-label">dname</label>
 		  <input type="text" 

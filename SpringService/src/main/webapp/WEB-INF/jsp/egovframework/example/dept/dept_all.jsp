@@ -3,20 +3,22 @@
 <html>
 <head>
 	<title>Dept</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 	<script type="text/javascript" defer="defer">
 		function fn_egov_selectList() {
-			document.listForm.action = "<c:out value="/dept/dept.do" />";
-			document.listForm.submit();
+			$("#listForm").attr("action",'<c:out value="/dept/dept.do" />')
+					.submit();
+			
 		}
 		function fn_addView() {
-			document.listForm.action="<c:out value="/dept/addition.do"/>";
-            document.listForm.submit();
+			$("#listForm").attr("action",'<c:out value="/dept/addition.do" />')
+			.submit();
         }
 	    function fn_select(dno) {
-			document.listForm.dno.value = dno;
-			document.listForm.action="<c:out value="/dept/edition.do"/>";
-	        document.listForm.submit();
+			$("#dno").val(dno); 
+			$("#listForm").attr("action",'<c:out value="/dept/edition.do" />')
+						.submit();
 	    }
 	</script>
 	
@@ -61,7 +63,7 @@
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
 <form id="listForm" name="listForm" method="get" >
-    <input type="hidden" name="dno" />
+    <input type="hidden" id="dno" name="dno" />
 		
 	<div class="page mt5">
 		<h2>전체 조회</h2>
