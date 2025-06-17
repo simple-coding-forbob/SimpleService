@@ -27,7 +27,7 @@ public class DeptAjaxController {
 	private DeptService deptService;
 
 	@GetMapping("/api/dept/dept.do")
-	public List<?> selectDeptList(@ModelAttribute("searchVO") Criteria criteria) {
+	public List<?> selectDeptList(@ModelAttribute Criteria criteria) {
 		log.info(criteria);
 		List<?> list = deptService.selectDeptList(criteria);
 		

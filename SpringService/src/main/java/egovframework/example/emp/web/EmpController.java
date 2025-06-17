@@ -21,7 +21,7 @@ public class EmpController {
 	private EmpService empService;
 	
 	@GetMapping("/emp/emp.do")
-	public String selectEmpList(@ModelAttribute("searchVO") Criteria criteria, Model model) {
+	public String selectEmpList(@ModelAttribute Criteria criteria, Model model) {
 		
 		List<?> list = empService.selectEmpList(criteria);
 		model.addAttribute("list", list);

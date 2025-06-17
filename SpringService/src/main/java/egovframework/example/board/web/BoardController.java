@@ -23,7 +23,7 @@ public class BoardController {
 	private BoardService boardService;
 
 	@GetMapping("/board/board.do")
-	public String selectBoardList(@ModelAttribute("searchVO") Criteria criteria, Model model) {
+	public String selectBoardList(@ModelAttribute Criteria criteria, Model model) {
 		List<?> list = boardService.selectBoardList(criteria);
 		model.addAttribute("list", list);
 

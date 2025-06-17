@@ -3,61 +3,13 @@
 <html>
 <head>
 	<title>Dept</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-	<script type="text/javascript" defer="defer">
-		function fn_egov_selectList() {
-			$("#listForm").attr("action",'<c:out value="/emp/emp.do" />')
-					.submit();
-		}
-		function fn_addView() {
-			$("#listForm").attr("action",'<c:out value="/emp/addition.do" />')
-			.submit();
-        }
-	    function fn_select(eno) {
-			$("#eno").val(eno); 
-			$("#listForm").attr("action",'<c:out value="/emp/edition.do" />')
-						.submit();
-	    }
-	</script>
-	
-	<script>
-	    /* 자동완성 + debouncing(성능업, 입력후 0.5초 이후에 AJAX 실행) */
-	    $(function () {
-	    	let timer;
-	        $("#searchKeyword").keyup(function () {
-	        	clearTimeout(timer);  // 이전 타이머 취소
-	        	timer=setTimeout(function() {fn_ajax();},500)
-	        });
-	    });
-	    function fn_ajax() {
-	    	let searchKeyword = $("#searchKeyword").val();
-	        $.ajax({
-	            url: "/api/emp/emp.do",
-	            type: "GET",
-	            dataType: "json",
-	            data: {"searchKeyword":searchKeyword},
-	            success: function (data) {
-	            	console.log(data);
-	            	$("#result").empty();
-	            	if(searchKeyword !="") {
-	            		/* 화면에 보이기 */
-	            		fn_view(data);
-	            	}
-	            },
-	            error: function (request) {
-	                console.error(request);
-	            }
-	        });			
-		}
-	    function fn_view(data) {
-	       	let res="";
-	           $.each(data, function (index, value) {
-					res+=value.ename + "<br>";
-			})
-			$("#result").html(res);		
-		}
-	</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+<!-- 	css 부트스트랩 cdn  -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!-- 	개발자가 만든 css -->
+    <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
@@ -117,5 +69,60 @@
 </form>
 
 <jsp:include page="/common/footer.jsp"></jsp:include>
+	
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+	<script type="text/javascript" defer="defer">
+		function fn_egov_selectList() {
+			$("#listForm").attr("action",'<c:out value="/emp/emp.do" />')
+					.submit();
+		}
+		function fn_addView() {
+			$("#listForm").attr("action",'<c:out value="/emp/addition.do" />')
+			.submit();
+        }
+	    function fn_select(eno) {
+			$("#eno").val(eno); 
+			$("#listForm").attr("action",'<c:out value="/emp/edition.do" />')
+						.submit();
+	    }
+	</script>
+	
+	<script>
+	    /* 자동완성 + debouncing(성능업, 입력후 0.5초 이후에 AJAX 실행) */
+	    $(function () {
+	    	let timer;
+	        $("#searchKeyword").keyup(function () {
+	        	clearTimeout(timer);  // 이전 타이머 취소
+	        	timer=setTimeout(function() {fn_ajax();},500)
+	        });
+	    });
+	    function fn_ajax() {
+	    	let searchKeyword = $("#searchKeyword").val();
+	        $.ajax({
+	            url: "/api/emp/emp.do",
+	            type: "GET",
+	            dataType: "json",
+	            data: {"searchKeyword":searchKeyword},
+	            success: function (data) {
+	            	console.log(data);
+	            	$("#result").empty();
+	            	if(searchKeyword !="") {
+	            		/* 화면에 보이기 */
+	            		fn_view(data);
+	            	}
+	            },
+	            error: function (request) {
+	                console.error(request);
+	            }
+	        });			
+		}
+	    function fn_view(data) {
+	       	let res="";
+	           $.each(data, function (index, value) {
+					res+=value.ename + "<br>";
+			})
+			$("#result").html(res);		
+		}
+	</script>
 </body>
 </html>

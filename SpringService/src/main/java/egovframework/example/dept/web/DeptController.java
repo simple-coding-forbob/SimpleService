@@ -23,7 +23,7 @@ public class DeptController {
 	private DeptService deptService;
 
 	@GetMapping("/dept/dept.do")
-	public String selectDeptList(@ModelAttribute("searchVO") Criteria criteria, Model model) {
+	public String selectDeptList(@ModelAttribute Criteria criteria, Model model) {
 		List<?> list = deptService.selectDeptList(criteria);
 		model.addAttribute("list", list);
 

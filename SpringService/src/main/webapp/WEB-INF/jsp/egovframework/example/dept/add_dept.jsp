@@ -4,13 +4,14 @@
 <head>
 	<title>Dept</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+<!-- 	css 부트스트랩 cdn  -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!-- 	개발자가 만든 css -->
+    <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+	
 	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-	<script type="text/javascript" defer="defer">
-		function fn_save() {
-			$("#addForm").attr("action",'<c:out value="/dept/add.do" />')
-			.submit();
-		}
-	</script>
+
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
@@ -43,6 +44,12 @@
 	</form>
 </div>
 <jsp:include page="/common/footer.jsp"></jsp:include>
+	<script type="text/javascript" defer="defer">
+		function fn_save() {
+			$("#addForm").attr("action",'<c:out value="/dept/add.do" />')
+			.submit();
+		}
+	</script>
 </body>
 </html>
 
