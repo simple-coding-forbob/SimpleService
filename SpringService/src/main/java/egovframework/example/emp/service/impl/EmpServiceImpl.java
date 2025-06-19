@@ -29,8 +29,8 @@ public class EmpServiceImpl implements EmpService {
 	}
 	
 	@Override
-	public EmpVO selectMember(long eno) {
-		return empMapper.selectMember(eno);
+	public EmpVO selectEmp(long eno) {
+		return empMapper.selectEmp(eno);
 	}
 	
 	@Override

@@ -45,7 +45,7 @@ public class EmpController {
 	public String updateMemberView(@RequestParam(defaultValue = "0") long eno,
 									Model model
 			) {
-		EmpVO empVO = empService.selectMember(eno);
+		EmpVO empVO = empService.selectEmp(eno);
 		model.addAttribute("empVO", empVO);
 		return "emp/update_emp";
 	}

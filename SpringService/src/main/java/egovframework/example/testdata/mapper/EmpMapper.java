@@ -31,7 +31,7 @@ public class EmpMapper {
     }
 
     //    아이디로 조회하는 함수
-    public EmpVO selectMember(long eno) {
+    public EmpVO selectEmp(long eno) {
         List<EmpVO> list = sampleEmp.getList();
 
         EmpVO resDept = null;
