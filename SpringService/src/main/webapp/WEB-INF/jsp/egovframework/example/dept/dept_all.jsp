@@ -101,7 +101,7 @@
 	            data: {"searchKeyword":searchKeyword},
 	            success: function (data) {
 	            	console.log(data);
-	            	$("#result").empty();
+	            	$("#result").empty();     // 값 지우기
 	            	if(searchKeyword !="") {
 	            		/* 화면에 보이기 */
 	            		fn_view(data);
@@ -114,10 +114,14 @@
 		}
 	    function fn_view(data) {
 	       	let res="";
-	           $.each(data, function (index, value) {
+			// for (var i = 0; i < data.length; i++) {
+       		//    res+=data[i].dname + "<br>";
+		    // }
+			// 자바의 stream 과 유사(자동 반복문 실행, index(인덱스번호), value(배열값))
+	        $.each(data, function (index, value) {
 					res+=value.dname + "<br>";
 			})
-			$("#result").html(res);		
+			$("#result").html(res);
 		}
 	</script>
 </body>

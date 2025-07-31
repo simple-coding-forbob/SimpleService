@@ -27,7 +27,7 @@ public class EmpAjaxController {
 	private EmpService empService;
 
 	@GetMapping("/api/emp/emp.do")
-	public List<?> selectEmpList(@ModelAttribute("searchVO") Criteria criteria) {
+	public List<?> selectEmpList(@ModelAttribute Criteria criteria) {
 		log.info(criteria);
 		List<?> list = empService.selectEmpList(criteria);
 		
