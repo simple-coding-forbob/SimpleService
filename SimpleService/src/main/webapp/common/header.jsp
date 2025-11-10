@@ -1,33 +1,53 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-		<img src="<c:url value='/images/simple-coding.png'/>" width="20" height="20" />
-    	simple-coding
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            그룹관리
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<c:url value='/dept'/>">Dept</a></li>
-            <li><a class="dropdown-item" href="<c:url value='/emp'/>">Emp(퀴즈)</a></li>
-            <li><a class="dropdown-item" href="<c:url value='/board'/>">Board(마무리퀴즈)</a></li>
-          </ul>
-        </li>
-
-      </ul>
-
+<nav class="bg-gray-100 text-gray-800">
+    <div class="bg-blue-700 text-white flex justify-between border-b items-center py-1 px-5">
+        <div class="text font-bold">simple-coding</div>
+        <div class="flex items-center gap-4">
+            <button
+                    aria-label="햄버거 메뉴 열기/닫기"
+            >
+                ☰
+            </button>
+        </div>
     </div>
-  </div>
+    <div class="flex flex-col gap-4 transition-all duration-700 md:flex-row md:justify-between md:items-center
+        max-h-1000">
+        <ul class="flex flex-col gap-4 pl-5 py-2 md:flex-row">
+            <li>
+                <a class="hover:underline" href="/">홈</a>
+            </li>
+            <li class="group md:relative">
+                <a class="hover:underline" href="#">
+                    부서관리
+                </a>
+                <ul class="md:absolute md:top-full md:left-0 md:opacity-0 md:invisible md:group-hover:opacity-100
+            md:group-hover:visible md:transition-all md:bg-white md:text-black md:w-42 md:p-2 md:rounded">
+                    <li class="m-2"><a class="hover:underline" href="/dept">부서조회</a></li>
+                    <li class="m-2"><a class="hover:underline" href="/dept/addition">부서추가</a></li>
+                </ul>
+            </li>
+            <li class="group md:relative">
+                <a class="hover:underline" href="#">
+                    사원관리
+                </a>
+                <ul class="md:absolute md:top-full md:left-0 md:opacity-0 md:invisible md:group-hover:opacity-100
+            md:group-hover:visible md:transition-all md:bg-white md:text-black md:w-42 md:p-2 md:rounded">
+                    <li class="m-2"><a class="hover:underline" href="/emp">사원조회(퀴즈)</a></li>
+                    <li class="m-2"><a class="hover:underline" href="/emp/addition">사원추가(퀴즈)</a></li>
+                </ul>
+            </li>
+            <li class="group md:relative">
+                <a class="hover:underline" href="#">
+                    게시판관리
+                </a>
+                <ul class="md:absolute md:top-full md:left-0 md:opacity-0 md:invisible md:group-hover:opacity-100
+            md:group-hover:visible md:transition-all md:bg-white md:text-black md:w-42 md:p-2 md:rounded">
+                    <li class="m-2"><a class="hover:underline" href="/board">게시판조회(마무리퀴즈)</a></li>
+                    <li class="m-2"><a class="hover:underline" href="/board/addition">게시판추가(마무리퀴즈)</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </nav>
