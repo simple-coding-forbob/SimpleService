@@ -1,8 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
     <title>Dept</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="부서 조회 페이지입니다.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 	tailwind cdn  -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -13,6 +16,8 @@
 <jsp:include page="/common/header.jsp"></jsp:include>
 <form class="container mx-auto mt-8 px-3" id="listForm" name="listForm" method="get">
     <input type="hidden" id="dno" name="dno"/>
+    <!-- TODO: 컨트롤러로 보낼 페이지번호 -->
+    <input type="hidden" id="page" name="page" value="0">
 
     <h1 class="text-2xl font-bold mb-6">부서 조회</h1>
 
@@ -43,7 +48,7 @@
         <c:forEach var="data" items="${list}">
             <tr  class="hover:bg-gray-50">
                 <td class="px-4 py-2 border-b text-center">
-                    <a href="/dept/edition/${data.dno}">
+                    <a href="/dept/edition?dno=<c:out value='${data.dno}'/>">
                         <c:out value="${data.dno}"/>
                     </a>
                 </td>

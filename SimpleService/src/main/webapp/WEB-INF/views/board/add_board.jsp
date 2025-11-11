@@ -1,52 +1,59 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-	<title>Board</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
-<!-- 	css 부트스트랩 cdn  -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<!-- 	개발자가 만든 css -->
-    <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+    <title>Dept</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="게시판 추가 페이지입니다.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- 	tailwind cdn  -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- 	개발자가 만든 css -->
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
-<div class="page mt5">
-	<form id="addForm" name="addForm" method="post">
-		<div class="mb3">
-		  <label for="title" class="form-label">title</label>
-		  <input type="text" 
-		         class="form-control" 
-		         id="title" 
-		         name="title"
-		         placeholder="부서명">
-		</div>
-		
-		<div class="mb3">
-		  <label for="content" class="form-label">content</label>
-		  <input type="text" 
-		         class="form-control" 
-		         id="content" 
-		         name="content"
-		         placeholder="부서위치">
-		</div>
-		
-		<div class="mb3">
-			<button type="button" 
-			        class="btn btn-primary"
-			        onclick="fn_save()"
-			>저장</button>
-		</div>
-	</form>
+<div  class="container mx-auto mt-8 px-3" >
+    <h1 class="text-2xl font-bold mb-6">게시판 추가</h1>
+    <form id="addForm" name="addForm" method="post">
+        <div class="mb-4">
+            <label for="title" class="block mb-1">title</label>
+            <input type="text"
+                   class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
+                   id="title"
+                   name="title"
+                   placeholder="제목">
+        </div>
+
+        <div class="mb-4">
+            <label for="content" class="block mb-1">content</label>
+            <input type="text"
+                   class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
+                   id="content"
+                   name="content"
+                   placeholder="내용">
+        </div>
+
+        <div class="mb-4">
+            <button type="button"
+                    class="w-full bg-blue-700 text-white p-2 rounded hover:bg-blue-800"
+                    onclick="fn_save()"
+            >저장
+            </button>
+        </div>
+    </form>
 </div>
 <jsp:include page="/common/footer.jsp"></jsp:include>
-	<script type="text/javascript" defer="defer">
-		function fn_save() {
-			document.addForm.action = "<c:out value="/board/add"/>";
-			document.addForm.submit();
-		}
-	</script>
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script type="text/javascript" defer="defer">
+    function fn_save() {
+        $("#addForm").attr("action", "/board/add")
+            .submit();
+    }
+</script>
 </body>
 </html>
 

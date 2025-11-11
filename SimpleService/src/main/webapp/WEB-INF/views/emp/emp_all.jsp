@@ -1,128 +1,77 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-	<title>Dept</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			
-<!-- 	css 부트스트랩 cdn  -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<!-- 	개발자가 만든 css -->
-    <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
-
+    <title>Dept</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="사원 조회 페이지입니다.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 	tailwind cdn  -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- 	개발자가 만든 css -->
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
-<form id="listForm" name="listForm" method="get">
-    <input type="hidden" id="eno" name="eno" />
-    
-	<div class="page mt5">
-		<h2>전체 조회</h2>
-			
-    	<div class="input-group mb3 mt3">
-		  <input type="text" 
-		         class="form-control" 
-		         id="searchKeyword"
-		         name="searchKeyword"
-		         placeholder="사원명입력"
-		  >
-		  <button class="btn btn-primary" 
-		          type="button" 
-		          onclick="fn_egov_selectList()"
-		  >
-		          검색
-		  </button>
-		</div>
-		<div id="result"></div>
-		
-		<table class="table">
-		  <thead>
-		    <tr>
-		      <th scope="col">eno</th>
-		      <th scope="col">ename</th>
-		      <th scope="col">job</th>
-		      <th scope="col">manager</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-			<c:forEach var="data" items="${list}">
-		    <tr>
-		    
-		      <td>
-		      	<a href="javascript:fn_select('<c:out value="${data.eno}"/>')">
-				   <c:out value="${data.eno}"/>
-				</a>
-		      </td>
+<form class="container mx-auto mt-8 px-3" id="listForm" name="listForm" method="get">
+    <input type="hidden" id="eno" name="eno"/>
 
-		      <td><c:out value="${data.ename}"/></td>
-		      <td><c:out value="${data.job}"/></td>
-		      <td><c:out value="${data.manager}"/></td>
-		    </tr>
-			</c:forEach>
-		  </tbody>
-		</table>
+    <h1 class="text-2xl font-bold mb-6">사원 조회</h1>
 
-		<div class="text-center">
-			<a href="javascript:fn_addView()" class="btn btn-primary">추가</a> 
-		</div>
-	</div>
+    <div class="flex justify-center mb-4">
+        <input type="text"
+               class="w-full border border-gray-300 rounded-l p-2 focus:outline-none focus:ring focus:ring-blue-500"
+               id="searchKeyword"
+               name="searchKeyword"
+               placeholder="사원명입력"
+        >
+        <button class="bg-blue-700 text-white hover:bg-blue-800 px-4 py-2 rounded-r min-w-[5rem]"
+                type="button"
+                onclick="fn_egov_selectList()"
+        >
+            검색
+        </button>
+    </div>
+
+    <table class="w-[100%] border border-gray-200">
+        <thead class="bg-blue-700 text-white">
+        <tr>
+            <th scope="col" class="px-4 py-2 border-b">eno</th>
+            <th scope="col" class="px-4 py-2 border-b">ename</th>
+            <th scope="col" class="px-4 py-2 border-b">job</th>
+            <th scope="col" class="px-4 py-2 border-b">manager</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="data" items="${list}">
+            <tr  class="hover:bg-gray-50">
+                <td class="px-4 py-2 border-b text-center">
+                    <a href="/emp/edition?eno=<c:out value='${data.eno}'/>">
+                        <c:out value="${data.eno}"/>
+                    </a>
+                </td>
+                <td class="px-4 py-2 border-b"><c:out value="${data.ename}"/></td>
+                <td class="px-4 py-2 border-b"><c:out value="${data.job}"/></td>
+                <td class="px-4 py-2 border-b"><c:out value="${data.manager}"/></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </form>
 
 <jsp:include page="/common/footer.jsp"></jsp:include>
-	
-	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-	<script type="text/javascript" defer="defer">
-		function fn_egov_selectList() {
-			$("#listForm").attr("action",'<c:out value="/emp" />')
-					.submit();
-		}
-		function fn_addView() {
-			$("#listForm").attr("action",'<c:out value="/emp/addition" />')
-			.submit();
-        }
-	    function fn_select(eno) {
-			$("#eno").val(eno); 
-			$("#listForm").attr("action",'<c:out value="/emp/edition" />')
-						.submit();
-	    }
-	</script>
-	
-	<script>
-	    /* 자동완성 + debouncing(성능업, 입력후 0.5초 이후에 AJAX 실행) */
-	    $(function () {
-	    	let timer;
-	        $("#searchKeyword").keyup(function () {
-	        	clearTimeout(timer);  // 이전 타이머 취소
-	        	timer=setTimeout(function() {fn_ajax();},500)
-	        });
-	    });
-	    function fn_ajax() {
-	    	let searchKeyword = $("#searchKeyword").val();
-	        $.ajax({
-	            url: "/api/emp",
-	            type: "GET",
-	            dataType: "json",
-	            data: {"searchKeyword":searchKeyword},
-	            success: function (data) {
-	            	console.log(data);
-	            	$("#result").empty();
-	            	if(searchKeyword !="") {
-	            		/* 화면에 보이기 */
-	            		fn_view(data);
-	            	}
-	            },
-	            error: function (request) {
-	                console.error(request);
-	            }
-	        });			
-		}
-	    function fn_view(data) {
-	       	let res="";
-	           $.each(data, function (index, value) {
-					res+=value.ename + "<br>";
-			})
-			$("#result").html(res);
-		}
-	</script>
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script type="text/javascript" defer="defer">
+    function fn_egov_selectList() {
+        $("#listForm").attr("action", "/emp")
+            .submit();
+    }
+</script>
+
 </body>
 </html>
+
+
+

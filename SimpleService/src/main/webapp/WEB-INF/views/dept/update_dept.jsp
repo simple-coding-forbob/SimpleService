@@ -1,51 +1,55 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
 	<title>Dept</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="부서 상세 페이지입니다.">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			
-<!-- 	css 부트스트랩 cdn  -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<!-- 	개발자가 만든 css -->
-    <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+
+    <!-- 	tailwind cdn  -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- 	개발자가 만든 css -->
+    <link rel="stylesheet" href="/css/style.css">
 
 </head>
 <body>
 
 <jsp:include page="/common/header.jsp"></jsp:include>
-<div class="page mt5">
+<div class="container mx-auto mt-8 px-3" >
+    <h1 class="text-2xl font-bold mb-6">부서 상세조회</h1>
 	<form id="addForm" name="addForm" method="post">
 		<input type="hidden" id="dno" name="dno" value="<c:out value="${dept.dno}"/>" />
-		<div class="mb-3">
-		  <label for="dname" class="form-label">dname</label>
+		<div class="mb-4">
+		  <label for="dname" class="block mb-1">dname</label>
 		  <input type="text" 
-		         class="form-control" 
+		         class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
 		         id="dname" 
 		         name="dname"
 		         value="<c:out value="${dept.dname}"/>"
 		         placeholder="부서명">
 		</div>
 		
-		<div class="mb3">
-		  <label for="loc" class="form-label">loc</label>
+		<div class="mb-4">
+		  <label for="loc" class="block mb-1">loc</label>
 		  <input type="text" 
-		         class="form-control" 
+		         class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
 		         id="loc" 
 		         name="loc"
 		         value="<c:out value="${dept.loc}"/>"
 		         placeholder="부서위치">
 		</div>
 		
-		<div class="mb3">
+		<div class="mb-4 flex gap-2">
 			<button type="button" 
-			        class="btn btn-warning"
+			        class="flex-1 bg-green-700 text-white p-2 rounded hover:bg-green-800"
 			        onclick="fn_save()"
 			>
 			   수정
 			</button>
 			<button type="button" 
-			        class="btn btn-danger"
+			        class="flex-1 bg-red-600 text-white p-2 rounded hover:bg-red-700"
 			        onclick="fn_delete()"
 			>
 			   삭제
@@ -59,11 +63,11 @@
 	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 	<script type="text/javascript">
 		function fn_save() {
- 			$("#addForm").attr("action",'<c:out value="/dept/edit" />')
+ 			$("#addForm").attr("action","/dept/edit")
 			.submit();
 		}
 		function fn_delete(){
-			$("#addForm").attr("action",'<c:out value="/dept/delete" />')
+			$("#addForm").attr("action","/dept/delete")
 			.submit();
 		}
 		

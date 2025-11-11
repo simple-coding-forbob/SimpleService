@@ -1,8 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
     <title>Dept</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="부서 추가 페이지입니다.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- 	tailwind cdn  -->
@@ -12,29 +15,30 @@
 </head>
 <body>
 <jsp:include page="/common/header.jsp"></jsp:include>
-<div class="page mt5">
+<div  class="container mx-auto mt-8 px-3" >
+    <h1 class="text-2xl font-bold mb-6">부서 추가</h1>
     <form id="addForm" name="addForm" method="post">
-        <div class="mb3">
-            <label for="dname" class="form-label">dname</label>
+        <div class="mb-4">
+            <label for="dname" class="block mb-1">dname</label>
             <input type="text"
-                   class="form-control"
+                   class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="dname"
                    name="dname"
                    placeholder="부서명">
         </div>
 
-        <div class="mb3">
-            <label for="loc" class="form-label">loc</label>
+        <div class="mb-4">
+            <label for="loc" class="block mb-1">loc</label>
             <input type="text"
-                   class="form-control"
+                   class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="loc"
                    name="loc"
                    placeholder="부서위치">
         </div>
 
-        <div class="mb3">
+        <div class="mb-4">
             <button type="button"
-                    class="btn btn-primary"
+                    class="w-full bg-blue-700 text-white p-2 rounded hover:bg-blue-800"
                     onclick="fn_save()"
             >저장
             </button>
@@ -46,7 +50,7 @@
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script type="text/javascript" defer="defer">
     function fn_save() {
-        $("#addForm").attr("action", '<c:out value="/dept/add" />')
+        $("#addForm").attr("action", "/dept/add")
             .submit();
     }
 </script>
