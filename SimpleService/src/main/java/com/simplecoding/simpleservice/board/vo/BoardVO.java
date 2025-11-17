@@ -13,14 +13,14 @@ import lombok.*;
 @Setter
 @ToString
 @NoArgsConstructor
-public class Board extends Criteria {
+public class BoardVO extends Criteria {
 
     private Integer id;     // 게시판 번호
     private String title;   // 게시판 제목
     private String content; // 게시판 내용
 
     @Builder
-    public Board(Integer id, String title, String content) {
+    public BoardVO(Integer id, String title, String content) {
         super();
         this.id = id;
         this.title = title;

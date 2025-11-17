@@ -5,7 +5,8 @@ package com.simplecoding.simpleservice.emp.service;
 
 
 import com.simplecoding.simpleservice.common.Criteria;
-import com.simplecoding.simpleservice.emp.vo.Emp;
+
+import com.simplecoding.simpleservice.emp.vo.EmpVO;
 import com.simplecoding.simpleservice.testdata.mapper.EmpMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,18 +24,18 @@ public class EmpService {
 	}
 	
 	
-	public void insert(Emp emp) {
-		empMapper.insert(emp);
+	public void insert(EmpVO empVO) {
+		empMapper.insert(empVO);
 	}
 	
 	
-	public Emp selectEmp(long eno) {
+	public EmpVO selectEmp(long eno) {
 		return empMapper.selectEmp(eno);
 	}
 	
 	
-	public void update(Emp emp) {
-		empMapper.update(emp);
+	public void update(EmpVO empVO) {
+		empMapper.update(empVO);
 	}
 	
 	

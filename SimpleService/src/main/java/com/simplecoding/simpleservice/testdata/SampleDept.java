@@ -1,6 +1,6 @@
 package com.simplecoding.simpleservice.testdata;
 
-import com.simplecoding.simpleservice.dept.vo.Dept;
+import com.simplecoding.simpleservice.dept.vo.DeptVO;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
@@ -18,40 +18,40 @@ import java.util.List;
 @Getter
 @Setter
 public class SampleDept {
-    List<Dept> list = new ArrayList<Dept>();
+    List<DeptVO> list = new ArrayList<DeptVO>();
 
     public SampleDept() {
 
-    	Dept dept = Dept.builder()
+    	DeptVO deptVO = DeptVO.builder()
                 .dno(10)
                 .dname("Accounting")
                 .loc("Pusan")
                 .build();
 
-        list.add(dept);
+        list.add(deptVO);
 
-        dept = Dept.builder()
+        deptVO = DeptVO.builder()
                 .dno(20)
                 .dname("Marketing")
                 .loc("Seoul")
                 .build();
 
-        list.add(dept);
+        list.add(deptVO);
 
-        dept = Dept.builder()
+        deptVO = DeptVO.builder()
                 .dno(30)
                 .dname("Sales")
                 .loc("DaeGu")
                 .build();
 
-        list.add(dept);
+        list.add(deptVO);
 
-        dept = Dept.builder()
+        deptVO = DeptVO.builder()
                 .dno(40)
                 .dname("Development")
                 .loc("Seoul")
                 .build();
 
-        list.add(dept);
+        list.add(deptVO);
     }
 }

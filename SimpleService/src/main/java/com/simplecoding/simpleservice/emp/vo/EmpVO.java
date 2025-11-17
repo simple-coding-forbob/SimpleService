@@ -13,14 +13,14 @@ import lombok.*;
 @Getter
 @ToString
 @NoArgsConstructor
-public class Emp extends Criteria {
+public class EmpVO extends Criteria {
     private Integer eno;     // 사원번호
     private String ename;    // 사원명
     private String job;      // 직위
     private Integer manager; // 관리자 사원번호
 
     @Builder
-    public Emp(Integer eno, String ename, String job, Integer manager) {
+    public EmpVO(Integer eno, String ename, String job, Integer manager) {
         super();
         this.eno = eno;
         this.ename = ename;

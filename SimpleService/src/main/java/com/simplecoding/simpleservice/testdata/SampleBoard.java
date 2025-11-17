@@ -1,6 +1,7 @@
 package com.simplecoding.simpleservice.testdata;
 
-import com.simplecoding.simpleservice.board.vo.Board;
+
+import com.simplecoding.simpleservice.board.vo.BoardVO;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
@@ -18,50 +19,50 @@ import java.util.List;
 @Getter
 @Setter
 public class SampleBoard {
-    List<Board> list = new ArrayList<Board>();
+    List<BoardVO> list = new ArrayList<BoardVO>();
 
     public SampleBoard() {
 
         int iCount = 1;
 
-        Board board = Board.builder()
+        BoardVO boardVO = BoardVO.builder()
                 .id(iCount)
                 .title("제목")
                 .content("내용")
                 .build();
 
-        list.add(board);
+        list.add(boardVO);
 
-        board = Board.builder()
+        boardVO = BoardVO.builder()
                 .id(++iCount)
                 .title("제목2")
                 .content("내용2")
                 .build();
 
-        list.add(board);
+        list.add(boardVO);
 
-        board = Board.builder()
+        boardVO = BoardVO.builder()
                 .id(++iCount)
                 .title("제목3")
                 .content("내용3")
                 .build();
 
-        list.add(board);
+        list.add(boardVO);
 
-        board = Board.builder()
+        boardVO = BoardVO.builder()
                 .id(++iCount)
                 .title("제목4")
                 .content("내용4")
                 .build();
 
-        list.add(board);
+        list.add(boardVO);
 
-        board = Board.builder()
+        boardVO = BoardVO.builder()
                 .id(++iCount)
                 .title("제목5")
                 .content("내용5")
                 .build();
 
-        list.add(board);
+        list.add(boardVO);
     }
 }

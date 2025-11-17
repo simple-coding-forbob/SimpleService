@@ -58,8 +58,6 @@
     </table>
 </form>
 
-<jsp:include page="/common/footer.jsp"></jsp:include>
-
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script type="text/javascript" defer="defer">
     function fn_egov_selectList() {

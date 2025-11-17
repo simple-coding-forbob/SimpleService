@@ -5,7 +5,7 @@ package com.simplecoding.simpleservice.dept.service;
 
 
 import com.simplecoding.simpleservice.common.Criteria;
-import com.simplecoding.simpleservice.dept.vo.Dept;
+import com.simplecoding.simpleservice.dept.vo.DeptVO;
 import com.simplecoding.simpleservice.testdata.mapper.DeptMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,18 +24,18 @@ public class DeptService {
 	}
 	
 	
-	public void insert(Dept dept) {
-		deptMapper.insert(dept);
+	public void insert(DeptVO deptVO) {
+		deptMapper.insert(deptVO);
 	}
 	
 	
-	public Dept selectDept(long dno) {
+	public DeptVO selectDept(long dno) {
 		return deptMapper.selectDept(dno);
 	}
 	
 	
-	public void update(Dept dept) {
-		deptMapper.update(dept);	
+	public void update(DeptVO deptVO) {
+		deptMapper.update(deptVO);	
 	}
 	
 	

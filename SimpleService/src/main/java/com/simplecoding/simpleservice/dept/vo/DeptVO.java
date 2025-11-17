@@ -13,13 +13,13 @@ import lombok.*;
 @Setter
 @ToString
 @NoArgsConstructor
-public class Dept extends Criteria {
+public class DeptVO extends Criteria {
     private Integer dno;  //    부서번호
     private String dname; //    부서이름
     private String loc;   //    부서위치
 
     @Builder
-    public Dept(Integer dno, String dname, String loc) {
+    public DeptVO(Integer dno, String dname, String loc) {
         super();
         this.dno = dno;
         this.dname = dname;

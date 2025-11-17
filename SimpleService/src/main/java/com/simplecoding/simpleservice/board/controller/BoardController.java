@@ -2,7 +2,7 @@ package com.simplecoding.simpleservice.board.controller;
 
 
 import com.simplecoding.simpleservice.board.service.BoardService;
-import com.simplecoding.simpleservice.board.vo.Board;
+import com.simplecoding.simpleservice.board.vo.BoardVO;
 import com.simplecoding.simpleservice.common.Criteria;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +37,9 @@ public class BoardController {
 	}
 
 	@PostMapping("/board/add")
-	public String insert(@ModelAttribute Board board) {
+	public String insert(@ModelAttribute BoardVO boardVO) {
 		
-		boardService.insert(board);
+		boardService.insert(boardVO);
 		return "redirect:/board";
 	}
 
@@ -48,16 +48,16 @@ public class BoardController {
 	public String updateBoardView(Model model,
 					@RequestParam(defaultValue = "0") long id
 								) {
-		Board board = boardService.selectBoard(id);
-		model.addAttribute("board", board);
+		BoardVO boardVO = boardService.selectBoard(id);
+		model.addAttribute("boardVO", boardVO);
 
 		return "board/update_board";
 	}
 
 	@PostMapping("/board/edit")
 	public String update(@RequestParam(defaultValue = "0") long id, 
-			                 @ModelAttribute Board board) {
-		boardService.update(board);
+			                 @ModelAttribute BoardVO boardVO) {
+		boardService.update(boardVO);
 		return "redirect:/board";
 	}
 	

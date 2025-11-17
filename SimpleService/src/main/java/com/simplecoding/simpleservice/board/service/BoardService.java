@@ -4,7 +4,7 @@
 package com.simplecoding.simpleservice.board.service;
 
 
-import com.simplecoding.simpleservice.board.vo.Board;
+import com.simplecoding.simpleservice.board.vo.BoardVO;
 import com.simplecoding.simpleservice.common.Criteria;
 import com.simplecoding.simpleservice.testdata.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +26,16 @@ public class BoardService {
 		return boardMapper.selectBoardList(criteria);
 	}
 	
-	public void insert(Board board) {
-		boardMapper.insert(board);
+	public void insert(BoardVO boardVO) {
+		boardMapper.insert(boardVO);
 	}
 	
-	public Board selectBoard(long id) {
+	public BoardVO selectBoard(long id) {
 		return boardMapper.selectBoard(id);
 	}
 	
-	public void update(Board board) {
-		boardMapper.update(board);	
+	public void update(BoardVO boardVO) {
+		boardMapper.update(boardVO);	
 	}
 	
 	public void delete(long id) {

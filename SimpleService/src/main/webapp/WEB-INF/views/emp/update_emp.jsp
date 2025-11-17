@@ -20,14 +20,14 @@
 <div class="container mx-auto mt-8 px-3" >
     <h1 class="text-2xl font-bold mb-6">사원 상세조회</h1>
     <form id="addForm" name="addForm" method="post">
-        <input type="hidden" id="eno" name="eno" value="<c:out value="${emp.eno}"/>" />
+        <input type="hidden" id="eno" name="eno" value="<c:out value="${empVO.eno}"/>" />
         <div class="mb-4">
             <label for="ename" class="block mb-1">ename</label>
             <input type="text"
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="ename"
                    name="ename"
-                   value="<c:out value="${dept.ename}"/>"
+                   value="<c:out value="${empVO.ename}"/>"
                    placeholder="사원명">
         </div>
 
@@ -37,7 +37,7 @@
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="job"
                    name="job"
-                   value="<c:out value="${emp.job}"/>"
+                   value="<c:out value="${empVO.job}"/>"
                    placeholder="직위">
         </div>
 
@@ -47,7 +47,7 @@
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="manager"
                    name="manager"
-                   value="<c:out value="${emp.manager}"/>"
+                   value="<c:out value="${empVO.manager}"/>"
                    placeholder="관리자사원번호">
         </div>
 
@@ -68,7 +68,6 @@
     </form>
 
 </div>
-<jsp:include page="/common/footer.jsp"></jsp:include>
 
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script type="text/javascript">

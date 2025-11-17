@@ -2,7 +2,7 @@ package com.simplecoding.simpleservice.testdata.mapper;
 
 
 import com.simplecoding.simpleservice.common.Criteria;
-import com.simplecoding.simpleservice.dept.vo.Dept;
+import com.simplecoding.simpleservice.dept.vo.DeptVO;
 import com.simplecoding.simpleservice.testdata.SampleDept;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,20 +23,20 @@ public class DeptMapper {
     SampleDept SampleDept;
 
     //    모든 샘를 데이터 조회 함수
-    public List<Dept> selectAll() {
-        List<Dept> list = SampleDept.getList();
+    public List<DeptVO> selectAll() {
+        List<DeptVO> list = SampleDept.getList();
 
         return list;
     }
 
     //    아이디로 조회하는 함수
-    public Dept selectDept(long dno) {
-        List<Dept> list = SampleDept.getList();
+    public DeptVO selectDept(long dno) {
+        List<DeptVO> list = SampleDept.getList();
 
-        Dept resDept = null;
+        DeptVO resDept = null;
 
 //        id에 해당하는 값 찾기
-        for (Dept dpt : list) {
+        for (DeptVO dpt : list) {
             if(dpt.getDno() == dno) {
                 resDept = dpt;
             }
@@ -46,9 +46,9 @@ public class DeptMapper {
     }
 
 //    데이터를 저장하는 함수
-    public List<Dept> insert(Dept dept) {
+    public List<DeptVO> insert(DeptVO dept) {
 
-        List<Dept> list = SampleDept.getList();
+        List<DeptVO> list = SampleDept.getList();
 
         int count = selectAll().size(); // 전체 건수
         int newId = (count + 1) * 10;
@@ -62,13 +62,13 @@ public class DeptMapper {
     }
 
 //    데이터를 수정하는 함수
-    public List<Dept> update(Dept dept) {
+    public List<DeptVO> update(DeptVO dept) {
 
-        List<Dept> list = SampleDept.getList();
+        List<DeptVO> list = SampleDept.getList();
 
         if(dept.getDno() != null) {
             //            수정
-            for (Dept dpt : list) {
+            for (DeptVO dpt : list) {
                 if ((int)dpt.getDno() == (int)dept.getDno()) {
                     dpt.setDname(dept.getDname());
                     dpt.setLoc(dept.getLoc());
@@ -82,7 +82,7 @@ public class DeptMapper {
 
 //  데이터를 삭제하는 함수
     public int delete(long id) {
-        List<Dept> list = SampleDept.getList();
+        List<DeptVO> list = SampleDept.getList();
 
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getDno() == id) {
@@ -96,14 +96,14 @@ public class DeptMapper {
     
     //    이름 like 조회하는 함수
     public List<?> selectDeptList(Criteria criteria) {
-        List<Dept> list = SampleDept.getList();
+        List<DeptVO> list = SampleDept.getList();
 
-        List<Dept> resList =new ArrayList<Dept>();
+        List<DeptVO> resList =new ArrayList<DeptVO>();
         
         if(criteria.getSearchKeyword() == "") return list;
 
 //        dname 해당하는 값을 찾으면 새로운 배열에 넣기
-        for (Dept data : list) {
+        for (DeptVO data : list) {
             if(data.getDname().contains(criteria.getSearchKeyword())) {
             	resList.add(data);
             }
