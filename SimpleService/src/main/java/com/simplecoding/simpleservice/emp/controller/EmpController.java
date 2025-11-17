@@ -3,7 +3,7 @@ package com.simplecoding.simpleservice.emp.controller;
 
 import com.simplecoding.simpleservice.common.Criteria;
 import com.simplecoding.simpleservice.emp.service.EmpService;
-import com.simplecoding.simpleservice.emp.vo.Emp;
+import com.simplecoding.simpleservice.emp.vo.EmpVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,8 +35,8 @@ public class EmpController {
 	}
 	
 	@PostMapping("/emp/add")
-	public String insert(@ModelAttribute Emp emp) {
-		empService.insert(emp);
+	public String insert(@ModelAttribute EmpVO empVO) {
+		empService.insert(empVO);
 		return "redirect:/emp";
 	}
 	
@@ -45,18 +45,18 @@ public class EmpController {
 	public String updateMemberView(@RequestParam(defaultValue = "0") long eno,
 									Model model
 			) {
-		Emp emp = empService.selectEmp(eno);
-		model.addAttribute("emp", emp);
+		EmpVO empVO = empService.selectEmp(eno);
+		model.addAttribute("empVO", empVO);
 		return "emp/update_emp";
 	}
 	
 	@PostMapping("/emp/edit")
 	public String update(@RequestParam(defaultValue = "0") long eno, 
-			                 @ModelAttribute Emp emp) {
-		empService.update(emp);
+			                 @ModelAttribute EmpVO empVO) {
+		empService.update(empVO);
 		return "redirect:/emp";
 	}
-	
+
 	@PostMapping("/emp/delete")
 	public String delete(@RequestParam(defaultValue = "0") long eno) {
 		empService.delete(eno);

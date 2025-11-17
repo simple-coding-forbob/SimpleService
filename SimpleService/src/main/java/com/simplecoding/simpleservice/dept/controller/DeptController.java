@@ -3,7 +3,7 @@ package com.simplecoding.simpleservice.dept.controller;
 
 import com.simplecoding.simpleservice.common.Criteria;
 import com.simplecoding.simpleservice.dept.service.DeptService;
-import com.simplecoding.simpleservice.dept.vo.Dept;
+import com.simplecoding.simpleservice.dept.vo.DeptVO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,9 +37,9 @@ public class DeptController {
 	}
 
 	@PostMapping("/dept/add")
-	public String insert(@ModelAttribute Dept dept) {
-		log.info(dept);
-		deptService.insert(dept);
+	public String insert(@ModelAttribute DeptVO deptVO) {
+		log.info(deptVO);
+		deptService.insert(deptVO);
 		return "redirect:/dept";
 	}
 
@@ -48,16 +48,16 @@ public class DeptController {
 	public String updateDeptView(Model model,
 					@RequestParam(defaultValue = "0") long dno
 								) {
-		Dept dept = deptService.selectDept(dno);
-		model.addAttribute("dept", dept);
+		DeptVO deptVO = deptService.selectDept(dno);
+		model.addAttribute("deptVO", deptVO);
 
 		return "dept/update_dept";
 	}
 
 	@PostMapping("/dept/edit")
 	public String update(@RequestParam(defaultValue = "0") long dno, 
-			                 @ModelAttribute Dept dept) {
-		deptService.update(dept);
+			                 @ModelAttribute DeptVO deptVO) {
+		deptService.update(deptVO);
 		return "redirect:/dept";
 	}
 	

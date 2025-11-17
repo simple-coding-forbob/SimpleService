@@ -1,7 +1,7 @@
 package com.simplecoding.simpleservice.testdata.mapper;
 
 
-import com.simplecoding.simpleservice.board.vo.Board;
+import com.simplecoding.simpleservice.board.vo.BoardVO;
 import com.simplecoding.simpleservice.common.Criteria;
 import com.simplecoding.simpleservice.testdata.SampleBoard;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,20 +23,20 @@ public class BoardMapper {
     SampleBoard sampleBoard;
 
     //    모든 샘를 데이터 조회 함수
-    public List<Board> selectAll() {
-        List<Board> list = sampleBoard.getList();
+    public List<BoardVO> selectAll() {
+        List<BoardVO> list = sampleBoard.getList();
 
         return list;
     }
 
     //    아이디로 조회하는 함수
-    public Board selectBoard(long id) {
-        List<Board> list = sampleBoard.getList();
+    public BoardVO selectBoard(long id) {
+        List<BoardVO> list = sampleBoard.getList();
 
-        Board resBoard = null;
+        BoardVO resBoard = null;
 
 //        id에 해당하는 값 찾기
-        for (Board board : list) {
+        for (BoardVO board : list) {
             if(board.getId() == id) {
                 resBoard = board;
             }
@@ -46,9 +46,9 @@ public class BoardMapper {
     }
 
 //    데이터를 저장하는 함수
-    public List<Board> insert(Board board) {
+    public List<BoardVO> insert(BoardVO board) {
 
-        List<Board> list = sampleBoard.getList();
+        List<BoardVO> list = sampleBoard.getList();
 
         int count = selectAll().size(); // 전체 건수
         int newId = count + 1;
@@ -62,13 +62,13 @@ public class BoardMapper {
     }
 
 //    데이터를 수정하는 함수
-    public List<Board> update(Board board) {
+    public List<BoardVO> update(BoardVO board) {
 
-        List<Board> list = sampleBoard.getList();
+        List<BoardVO> list = sampleBoard.getList();
 
         if(board.getId() != null) {
             //            수정
-            for (Board element : list) {
+            for (BoardVO element : list) {
                 if ((int)element.getId() == (int)board.getId()) {
                     element.setId(board.getId());
                     element.setTitle(board.getTitle());
@@ -83,7 +83,7 @@ public class BoardMapper {
 
 //  데이터를 삭제하는 함수
     public int delete(long id) {
-        List<Board> list = sampleBoard.getList();
+        List<BoardVO> list = sampleBoard.getList();
 
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getId() == id) {
@@ -96,14 +96,14 @@ public class BoardMapper {
     }
     
     public List<?> selectBoardList(Criteria criteria) {
-        List<Board> list = sampleBoard.getList();
+        List<BoardVO> list = sampleBoard.getList();
 
-        List<Board> resList =new ArrayList<Board>();
+        List<BoardVO> resList =new ArrayList<BoardVO>();
         
         if(criteria.getSearchKeyword() == "") return list;
 
 //        title 해당하는 값을 찾으면 새로운 배열에 넣기
-        for (Board data : list) {
+        for (BoardVO data : list) {
             if(data.getTitle().contains(criteria.getSearchKeyword())) {
             	resList.add(data);
             }

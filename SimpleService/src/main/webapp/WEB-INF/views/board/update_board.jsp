@@ -20,14 +20,14 @@
 <div class="container mx-auto mt-8 px-3" >
     <h1 class="text-2xl font-bold mb-6">게시판 상세조회</h1>
     <form id="addForm" name="addForm" method="post">
-        <input type="hidden" id="id" name="id" value="<c:out value="${board.id}"/>" />
+        <input type="hidden" id="id" name="id" value="<c:out value="${boardVO.id}"/>" />
         <div class="mb-4">
             <label for="title" class="block mb-1">title</label>
             <input type="text"
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="title"
                    name="title"
-                   value="<c:out value="${board.title}"/>"
+                   value="<c:out value="${boardVO.title}"/>"
                    placeholder="제목">
         </div>
 
@@ -37,7 +37,7 @@
                    class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-blue-500"
                    id="content"
                    name="content"
-                   value="<c:out value="${board.content}"/>"
+                   value="<c:out value="${boardVO.content}"/>"
                    placeholder="내용">
         </div>
 
@@ -59,7 +59,6 @@
     </form>
 
 </div>
-<jsp:include page="/common/footer.jsp"></jsp:include>
 
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script type="text/javascript">
