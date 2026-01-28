@@ -13,11 +13,9 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<jsp:include page="/common/header.jsp"></jsp:include>
-<form class="container mx-auto mt-8 px-3" id="listForm" name="listForm" action="" method="get">
-    <input type="hidden" id="dno" name="dno"/>
-    <!-- TODO: 컨트롤러로 보낼 페이지번호 -->
-    <input type="hidden" id="page" name="page" value="0">
+<%--머리말--%>
+<form class="container mx-auto mt-8 px-3" id="listForm" name="listForm">
+
 
     <h1 class="text-2xl font-bold mb-6">부서 조회</h1>
 
@@ -30,7 +28,6 @@
         >
         <button class="bg-blue-700 text-white hover:bg-blue-800 px-4 py-2 rounded-r min-w-[5rem]"
                 type="button"
-                onclick="fn_egov_selectList()"
         >
             검색
         </button>
@@ -45,28 +42,16 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="data" items="${list}">
             <tr  class="hover:bg-gray-50">
                 <td class="px-4 py-2 border-b text-center">
-                    <a href="/dept/edition?dno=<c:out value='${data.dno}'/>">
-                        <c:out value="${data.dno}"/>
-                    </a>
+                        11
                 </td>
-                <td class="px-4 py-2 border-b"><c:out value="${data.dname}"/></td>
-                <td class="px-4 py-2 border-b"><c:out value="${data.loc}"/></td>
+                <td class="px-4 py-2 border-b">22</td>
+                <td class="px-4 py-2 border-b">33</td>
             </tr>
-        </c:forEach>
         </tbody>
     </table>
 </form>
-
-<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-<script type="text/javascript">
-    function fn_egov_selectList() {
-        $("#listForm").attr("action", "/dept")
-            .submit();
-    }
-</script>
 
 </body>
 </html>

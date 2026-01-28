@@ -13,9 +13,8 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<jsp:include page="/common/header.jsp"></jsp:include>
-<form class="container mx-auto mt-8 px-3" id="listForm" name="listForm" method="get">
-    <input type="hidden" id="eno" name="eno"/>
+<%--머리말 --%>
+<form class="container mx-auto mt-8 px-3" id="listForm" name="listForm" >
 
     <h1 class="text-2xl font-bold mb-6">사원 조회</h1>
 
@@ -28,7 +27,6 @@
         >
         <button class="bg-blue-700 text-white hover:bg-blue-800 px-4 py-2 rounded-r min-w-[5rem]"
                 type="button"
-                onclick="fn_egov_selectList()"
         >
             검색
         </button>
@@ -44,29 +42,18 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="data" items="${list}">
             <tr  class="hover:bg-gray-50">
                 <td class="px-4 py-2 border-b text-center">
-                    <a href="/emp/edition?eno=<c:out value='${data.eno}'/>">
-                        <c:out value="${data.eno}"/>
-                    </a>
+                        11
                 </td>
-                <td class="px-4 py-2 border-b"><c:out value="${data.ename}"/></td>
-                <td class="px-4 py-2 border-b"><c:out value="${data.job}"/></td>
-                <td class="px-4 py-2 border-b"><c:out value="${data.manager}"/></td>
+                <td class="px-4 py-2 border-b">22</td>
+                <td class="px-4 py-2 border-b">33</td>
+                <td class="px-4 py-2 border-b">44</td>
             </tr>
-        </c:forEach>
         </tbody>
     </table>
 </form>
 
-<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-<script>
-    function fn_egov_selectList() {
-        $("#listForm").attr("action", "/emp")
-            .submit();
-    }
-</script>
 
 </body>
 </html>
